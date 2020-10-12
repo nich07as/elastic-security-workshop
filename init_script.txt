@@ -3,8 +3,8 @@ $cluster_name = 'APAC Security Workshop'
 $target_gcp_region = 'gcp-asia-southeast1'
 $stack_version = '7.9.2'
 $api_key = 'xxxxx'
-# $snapshot_name = 'cloud-snapshot-abc'
-# $snapshot_src_cluster_id = '1234'
+$snapshot_name = 'ingest-snapshot-jkcp2itgtpo6cumsq6x9_a'
+$snapshot_src_cluster_id = '75f586983b884242a9b371343ea8c42e'
 
 Set-ExecutionPolicy Unrestricted
 $logfile = "c:\Elastic\security_workshop_setup.log"
@@ -26,9 +26,9 @@ Invoke-WebRequest -Uri "$SrcUri/security_workshop_setup.ps1" -OutFile "$install_
 $params = $($api_key, `
             $target_gcp_region, `
             $cluster_name, `
-            $stack_version )
-#            $snapshot_name, `
-#            $snapshot_src_cluster_id)
+            $stack_version `
+            $snapshot_name, `
+            $snapshot_src_cluster_id)
 try {
     & "$install_dir\security_workshop_setup.ps1" @params | Out-File $logfile
 }

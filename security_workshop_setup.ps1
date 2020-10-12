@@ -2,9 +2,9 @@ param (
     [string]$api_key = $(throw "-api_key is required."),
     [string]$target_gcp_region = $(throw "-target_gcp_region is required."),
     [string]$cluster_name = $(throw "-cluster_name is required."),
-    [string]$stack_version = $(throw "-stack_version is required.")
-#    [string]$snapshot_name,
-#    [string]$snapshot_src_cluster_id
+    [string]$stack_version = $(throw "-stack_version is required."),
+    [string]$snapshot_name,
+    [string]$snapshot_src_cluster_id
 )
 
 $date = (Get-Date).ToString('yyyy-MM-dd')
