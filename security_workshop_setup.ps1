@@ -24,7 +24,7 @@ $sysmon_config_uri = "https://raw.githubusercontent.com/olafhartong/sysmon-modul
 $sysmon_local_rules_filepath = "C:\Windows\sysmon.xml"
 if (Test-Path "C:\Windows\Sysmon64.exe")
 {
-    Write-Output "Unistalling Sysmon..."
+    Write-Output "Uninstalling Sysmon..."
     Start-Process -WorkingDirectory "C:\Windows" -FilePath "sysmon64" -ArgumentList "-u" -Wait -NoNewWindow
 }
 Write-Output "Installing Sysmon..."
@@ -50,12 +50,12 @@ $elastic_cloud_plan.resources[0].elasticsearch[0].region = $target_gcp_region
 $elastic_cloud_plan.resources[0].kibana[0].region = $target_gcp_region
 $elastic_cloud_plan.resources[0].elasticsearch[0].plan.elasticsearch.version = $stack_version
 $elastic_cloud_plan.resources[0].kibana[0].plan.kibana.version = $stack_version
-# if ($snapshot_name) {
-#     $elastic_cloud_plan.resources[0].elasticsearch[0].plan.transient.restore_snapshot.snapshot_name = $snapshot_name
-# }
-# if ($snapshot_src_cluster_id) {
-#     $elastic_cloud_plan.resources[0].elasticsearch[0].plan.transient.restore_snapshot.source_cluster_id = $snapshot_src_cluster_id
-# }
+if ($snapshot_name) {
+    $elastic_cloud_plan.resources[0].elasticsearch[0].plan.transient.restore_snapshot.snapshot_name = $snapshot_name
+}
+if ($snapshot_src_cluster_id) {
+    $elastic_cloud_plan.resources[0].elasticsearch[0].plan.transient.restore_snapshot.source_cluster_id = $snapshot_src_cluster_id
+}
 
 $cluster_info = Invoke-RestMethod -Method Post -Uri $elastic_cloud_api_uri `
                                   -Headers @{ 'Authorization' = "ApiKey $api_key"; 'Content-Type' = 'application/json'} `
