@@ -3,7 +3,7 @@ $cluster_name = 'APAC Security Workshop'
 $target_gcp_region = 'gcp-asia-southeast1'
 $stack_version = '7.9.2'
 $api_key = ''
-$snapshot_name = 'ingest-snapshot-jkcp2itgtpo6cumsq6x9_a'
+$snapshot_name = 'ingest-snapshot-h9ngxlartfajotg5nzvscw'
 $snapshot_src_cluster_id = '75f586983b884242a9b371343ea8c42e'
 
 Set-ExecutionPolicy Unrestricted
