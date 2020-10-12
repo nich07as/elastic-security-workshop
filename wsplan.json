@@ -1,0 +1,91 @@
+{
+  "name": "",
+  "metadata": {
+    "system_owned": false
+  },
+  "resources": {
+    "elasticsearch": [
+      {
+        "region": "gcp-asia-southeast1",
+        "ref_id": "main-elasticsearch",
+        "plan": {
+          "cluster_topology": [
+            {
+              "node_type": {
+                "data": true,
+                "master": true,
+                "ingest": true
+              },
+              "instance_configuration_id": "gcp.data.highio.1",
+              "zone_count": 2,
+              "size": {
+                "resource": "memory",
+                "value": 4096
+              },
+              "elasticsearch": {
+                "enabled_built_in_plugins": [
+                  "mapper-size"
+                ]
+              }
+            },
+            {
+              "node_type": {
+                "data": false,
+                "master": false,
+                "ingest": false,
+                "ml": true
+              },
+              "instance_configuration_id": "gcp.ml.1",
+              "zone_count": 2,
+              "size": {
+                "resource": "memory",
+                "value": 2048
+              },
+              "elasticsearch": {
+                "enabled_built_in_plugins": [
+                  "mapper-size"
+                ]
+              }
+            }
+          ],
+          "elasticsearch": {
+            "version": "7.9.2"
+          },
+          "deployment_template": {
+            "id": "gcp-security"
+          },
+          "transient": {
+            "restore_snapshot": null
+          }
+        },
+        "settings": {
+          "dedicated_masters_threshold": 6
+        }
+      }
+    ],
+    "enterprise_search": [],
+    "kibana": [
+      {
+        "region": "gcp-asia-southeast1",
+        "elasticsearch_cluster_ref_id": "main-elasticsearch",
+        "ref_id": "main-kibana",
+        "plan": {
+          "cluster_topology": [
+            {
+              "instance_configuration_id": "gcp.kibana.1",
+              "zone_count": 1,
+              "size": {
+                "resource": "memory",
+                "value": 4096
+              }
+            }
+          ],
+          "kibana": {
+            "version": "7.9.2"
+          }
+        }
+      }
+    ],
+    "apm": []
+  }
+}
