@@ -8,7 +8,7 @@ $api_key = 'xxxxx'
 
 Set-ExecutionPolicy Unrestricted
 $logfile = "c:\Elastic\security_workshop_setup.log"
-$SrcUri = "https://github.com/nich07as/elastic-security-workshop/blob/v1.0/"
+$SrcUri = "https://github.com/nich07as/elastic-security-workshop/blob/master/"
 $install_dir = "C:\Elastic\"
 
 #The following two commands can be removed once AMI is updated
