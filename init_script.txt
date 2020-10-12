@@ -2,18 +2,18 @@
 $cluster_name = 'APAC Security Workshop'
 $target_gcp_region = 'gcp-asia-southeast1'
 $stack_version = '7.9.2'
-$api_key = 'xxxxx'
+$api_key = ''
 $snapshot_name = 'ingest-snapshot-jkcp2itgtpo6cumsq6x9_a'
 $snapshot_src_cluster_id = '75f586983b884242a9b371343ea8c42e'
 
 Set-ExecutionPolicy Unrestricted
 $logfile = "c:\Elastic\security_workshop_setup.log"
-$SrcUri = "https://github.com/nich07as/elastic-security-workshop/blob/master/"
+$SrcUri = "https://raw.githubusercontent.com/nich07as/elastic-security-workshop/master/"
 $install_dir = "C:\Elastic\"
 
 #The following two commands can be removed once AMI is updated
-Remove-Item C:\Users\Administrator\Desktop\cluster.txt
-Remove-Item -Path $install_dir -Recurse -Force
+# Remove-Item C:\Users\Administrator\Desktop\cluster.txt
+# Remove-Item -Path $install_dir -Recurse -Force
 
 if (!(Test-Path $install_dir))
 {
@@ -26,7 +26,7 @@ Invoke-WebRequest -Uri "$SrcUri/security_workshop_setup.ps1" -OutFile "$install_
 $params = $($api_key, `
             $target_gcp_region, `
             $cluster_name, `
-            $stack_version `
+            $stack_version, `
             $snapshot_name, `
             $snapshot_src_cluster_id)
 try {
