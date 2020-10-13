@@ -78,6 +78,7 @@ Write-Output "`nElastic Cloud Deployment was created successfully!"
 
 $kibana_url = $cluster.resources.kibana.info.metadata.endpoint
 $elasticsearch_url = $cluster.resources[0].elasticsearch[0].info.metadata.endpoint
+Start-Sleep -Seconds 300
 
 #Create Credentials File
 New-Item -Force $credentials_file_path | Out-Null
