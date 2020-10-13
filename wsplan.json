@@ -55,7 +55,10 @@
             "id": "gcp-security"
           },
           "transient": {
-            "restore_snapshot": null
+            "restore_snapshot": {
+              "snapshot_name": "ingest-snapshot-h9ngxlartfajotg5nzvscw",
+              "source_cluster_id": "75f586983b884242a9b371343ea8c42e"
+            }
           }
         },
         "settings": {
