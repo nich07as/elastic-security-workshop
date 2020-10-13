@@ -8,6 +8,9 @@
       {
         "region": "gcp-asia-southeast1",
         "ref_id": "main-elasticsearch",
+        "settings": {
+          "dedicated_masters_threshold": 6
+        },
         "plan": {
           "cluster_topology": [
             {
@@ -56,13 +59,10 @@
           },
           "transient": {
             "restore_snapshot": {
-              "snapshot_name": "ingest-snapshot-h9ngxlartfajotg5nzvscw",
+              "snapshot_name": "cloud-snapshot-2020.10.13-5nj0ao26so-5epo1j-vhhg",
               "source_cluster_id": "67daff8d307f42b295f62b3b20b88e63"
             }
           }
-        },
-        "settings": {
-          "dedicated_masters_threshold": 6
         }
       }
     ],
@@ -71,7 +71,6 @@
       {
         "region": "gcp-asia-southeast1",
         "elasticsearch_cluster_ref_id": "main-elasticsearch",
-        "ref_id": "main-kibana",
         "plan": {
           "cluster_topology": [
             {
@@ -86,7 +85,8 @@
           "kibana": {
             "version": "7.9.2"
           }
-        }
+        },
+        "ref_id": "main-kibana"
       }
     ],
     "apm": []
