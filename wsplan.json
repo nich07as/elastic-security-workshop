@@ -57,7 +57,7 @@
           "transient": {
             "restore_snapshot": {
               "snapshot_name": "ingest-snapshot-h9ngxlartfajotg5nzvscw",
-              "source_cluster_id": "75f586983b884242a9b371343ea8c42e"
+              "source_cluster_id": "67daff8d307f42b295f62b3b20b88e63"
             }
           }
         },
