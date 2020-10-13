@@ -3,8 +3,8 @@ $cluster_name = 'APAC Security Workshop'
 $target_gcp_region = 'gcp-asia-southeast1'
 $stack_version = '7.9.2'
 $api_key = ''
-$snapshot_name = 'ingest-snapshot-h9ngxlartfajotg5nzvscw'
-$snapshot_src_cluster_id = '67daff8d307f42b295f62b3b20b88e63'
+$snapshot_name = 'cloud-snapshot-2020.10.13-3heiarwhskak_a8dyhyarg'
+$snapshot_src_cluster_id = 'd5c84479bac94fcd92edc6f9cddc1e43'
 
 Set-ExecutionPolicy Unrestricted
 $logfile = "c:\Elastic\security_workshop_setup.log"
