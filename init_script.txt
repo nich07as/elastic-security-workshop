@@ -5,24 +5,19 @@ $stack_version = '7.9.2'
 $api_key = ''
 $snapshot_name = 'cloud-snapshot-2020.10.13-pdnvnsqzragm1ptd4rx7ka'
 $snapshot_src_cluster_id = 'a5662335747f4502aa3efcfcf8606c0a'
-
 Set-ExecutionPolicy Unrestricted
 $logfile = "c:\Elastic\security_workshop_setup.log"
 $SrcUri = "https://raw.githubusercontent.com/nich07as/elastic-security-workshop/master/"
 $install_dir = "C:\Elastic\"
-
 #The following two commands can be removed once AMI is updated
-# Remove-Item C:\Users\Administrator\Desktop\cluster.txt
-# Remove-Item -Path $install_dir -Recurse -Force
-
+Remove-Item C:\Users\Administrator\Desktop\cluster.txt
+Remove-Item -Path $install_dir -Recurse -Force
 if (!(Test-Path $install_dir))
 {
     New-Item -ItemType Directory -Path $install_dir
 }
-
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 Invoke-WebRequest -Uri "$SrcUri/security_workshop_setup.ps1" -OutFile "$install_dir\security_workshop_setup.ps1"
-
 $params = $($api_key, `
             $target_gcp_region, `
             $cluster_name, `
@@ -35,5 +30,4 @@ try {
 catch {
    $_.Exception.Message | Out-File $logfile -Append
 }
-
 </powershell>
