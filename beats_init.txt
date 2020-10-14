@@ -1,6 +1,6 @@
 <powershell>
 $stack_version = '7.9.2'
-$cloud_id = 'elastic-security-workshop-apj:YXNpYS1zb3V0aGVhc3QxLmdjcC5lbGFzdGljLWNsb3VkLmNvbSQzN2E2NWU1ZWRiNDA0NDJjYjRhNmYzNzFlNjViZWJmYSQ1YTVjOTMyMzYxMWI0OTBlYjc2NzAzY2YxZTE1ZGRmOA=='
+$cloud_id = ''
 $password = 'xxxx'
 $user_password = 'analyst_xxx'
 Set-ExecutionPolicy Unrestricted
