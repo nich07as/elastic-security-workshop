@@ -1,0 +1,29 @@
+<powershell>
+$stack_version = '7.9.2'
+$cloud_id = 'elastic-security-workshop-apj:YXNpYS1zb3V0aGVhc3QxLmdjcC5lbGFzdGljLWNsb3VkLmNvbSQzN2E2NWU1ZWRiNDA0NDJjYjRhNmYzNzFlNjViZWJmYSQ1YTVjOTMyMzYxMWI0OTBlYjc2NzAzY2YxZTE1ZGRmOA=='
+$password = 'xxxx'
+$user_password = 'analyst_xxx'
+Set-ExecutionPolicy Unrestricted
+$logfile = "c:\Elastic\security_workshop_setup.log"
+$SrcUri = "https://raw.githubusercontent.com/nich07as/elastic-security-workshop/master/"
+$install_dir = "C:\Elastic\"
+#The following two commands can be removed once AMI is updated
+#Remove-Item C:\Users\Administrator\Desktop\cluster.txt
+#Remove-Item -Path $install_dir -Recurse -Force
+if (!(Test-Path $install_dir))
+{
+    New-Item -ItemType Directory -Path $install_dir
+}
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+Invoke-WebRequest -Uri "$SrcUri/security_beats_setup.ps1" -OutFile "$install_dir\security_beats_setup.ps1"
+$params = $($stack_version, `
+            $cloud_id, `
+            $password, `
+            $user_password)
+try {
+    & "$install_dir\security_beats_setup.ps1" @params | Out-File $logfile
+}
+catch {
+   $_.Exception.Message | Out-File $logfile -Append
+}
+</powershell>
