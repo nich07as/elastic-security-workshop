@@ -67,11 +67,6 @@ function ElasticBeatSetup ([string]$beat_name)
     Write-Output $cloud_id | & $beat_exe_path @params
     $params = $('-c', $beat_config_path, 'keystore','add','ES_PWD','--stdin','--force','-path.data', $beat_data_path)
     Write-Output $password | & $beat_exe_path @params
-    
-    # Run Beat Setup
-    Write-Output "Running $beat_name setup..."
-    $params = $('-c', $beat_config_path, '-path.data', $beat_data_path)
-    & $beat_exe_path @params
 
     Write-Output "Starting $beat_name Service"
     Start-Service -Name $beat_name
