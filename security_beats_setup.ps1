@@ -1,7 +1,9 @@
 param (
     [string]$stack_version = $(throw "-stack_version is required."),
-    [string]$cloud_id,
-    [string]$password,
+    [string]$cloud_id = $(throw "-cloud_id is required")
+    [string]$password = $(throw "-cloud_password is required")
+    [string]$kibana_url = $(throw "-kibana_url is required")
+    [string]$elasticsearch_url = $(throw "-elasticsearch_url is required")
     [string]$user_password
 )
 
@@ -12,11 +14,13 @@ $beat_config_repository_uri = "https://raw.githubusercontent.com/nich07as/elasti
 Write-Output "*** Security Workshop Setup ***`n"
 
 #Update Elastic Cloud Plan based on command line parameters
-$cloud_id = $es_cloud_id
-$password = $es_cloud_password
-$user_password = $es_analyst_password
-$kibana_url = $es_kibana_endpoint
-$elasticsearch_url = $es_elasticsearch_endpoint
+#$cloud_id = $es_cloud_id
+#$password = $es_cloud_password
+#$user_password = $es_analyst_password
+#$kibana_url = $es_kibana_endpoint
+#$elasticsearch_url = $es_elasticsearch_endpoint
+$CLOUD_ID = $cloud_id
+$ES_PWD = $password
 
 #Create Credentials File
 New-Item -Force $credentials_file_path | Out-Null
