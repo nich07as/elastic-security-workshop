@@ -70,7 +70,7 @@ function ElasticBeatSetup ([string]$beat_name)
     
     # Run Beat Setup
     Write-Output "Running $beat_name setup..."
-    $params = $('-c', $beat_config_path, 'setup', '-path.data', $beat_data_path)
+    $params = $('-c', $beat_config_path, '-path.data', $beat_data_path)
     & $beat_exe_path @params
 
     Write-Output "Starting $beat_name Service"
